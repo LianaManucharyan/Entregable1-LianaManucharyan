@@ -1,10 +1,12 @@
 //bienvenida
 let bienvenida = alert('¡Bienvenido/a al catálogo de JoyeríaIan!'); 
+
 //nombre y apellido del usuario
 let nombre = prompt('Ingresa tu nombre');
 let apellido = prompt('Ingresa tu apellido');
 let nombreCompleto = nombre + " " + apellido;
 console.log('Bienvenido/a' + " " + nombreCompleto);
+
 //si el usuario quiere o no ver el catálogo de precio
 let catalogoPrecios = prompt('¿Deseas ver nuestro catálogo de joyas?');
 if (catalogoPrecios === "si") {
@@ -15,6 +17,7 @@ if (catalogoPrecios === "si") {
 } else {
     alert('Respuesta no válida. Por favor, responde con "si" o "no".');
 }
+
 //precio de los productos
 let productoElegido = prompt('¿De qué producto te gustaría saber el precio?');
 if (productoElegido === "Anillos") {
