@@ -20,7 +20,7 @@ if (catalogoPrecios === "si") {
 
 //precio de los productos
 let productoElegido = prompt('¿De qué producto te gustaría saber el precio?');
-if (productoElegido === "Anillos") {
+if (productoElegido === "Anillos" || productoElegido === "anillos" ) {
     const anilloProductos = [
         {id: 1, nombre: 'Anillo Esmeralda', precio: 'Ocho mil pesos'},
         {id: 2, nombre: 'Anillo Jazmín', precio: 'Dieciocho mil pesos'},
@@ -29,16 +29,16 @@ if (productoElegido === "Anillos") {
     for (const anillo of anilloProductos) {
         console.log(anillo);
     }
-} else if (productoElegido === "Collares") {
+} else if (productoElegido === "Collares" || productoElegido === "collares") {
     const collarProductos = [
         {id: 1, nombre: 'Collar Dorado', precio: 'Diez mil pesos'},
         {id: 2, nombre: 'Collar Esperanza', precio: 'Cinco mil pesos'},
-        {id: 3, nombre: 'Collar Tabú', precio: 'Diecisiete mil pesos'},
+        {id: 3, nombre: 'Collar Tulúm', precio: 'Diecisiete mil pesos'},
     ];
     for (const collar of collarProductos) {
         console.log(collar);
     }
-} else if (productoElegido === "Aros") {
+} else if (productoElegido === "Aros" || productoElegido === "aros") {
     const arosProductos = [
         {id: 1, nombre: 'Aros Circular', precio: 'Ocho mil pesos'},
         {id: 2, nombre: 'Aros Gota', precio: 'Diez mil pesos'},
@@ -50,3 +50,5 @@ if (productoElegido === "Anillos") {
 } else {
     console.log('Producto no encontrado');
 }
+//despedida
+let despedida = alert('¡Gracias por llegar hasta acá!'); 
