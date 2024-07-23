@@ -7,8 +7,8 @@ let apellido = prompt('Ingresa tu apellido');
 let nombreCompleto = nombre + " " + apellido;
 console.log('Bienvenido/a' + " " + nombreCompleto);
 
-//si el usuario quiere o no ver el catálogo de precio
-let catalogoPrecios = prompt('¿Deseas ver nuestro catálogo de joyas?');
+//si el usuario quiere o no ver el catálogo de precios
+let catalogoPrecios = prompt('¿Deseas ver nuestro catálogo de joyas? (si/no)');
 if (catalogoPrecios === "si") {
     const productos = ['Anillos', 'Collares', 'Aros'];
     console.log(productos.sort());
@@ -24,39 +24,39 @@ if (productoElegido === "Anillos" || productoElegido === "anillos" ) {
     const anillo1 = {
         id: 1,
         nombre: 'Anillo Esmeralda',
-        precio: 8.000
+        precio: 8000
     }
     const anillo2 = {
         id: 2,
         nombre: 'Anillo Jazmín',
-        precio: 18.000
+        precio: 18000
     }
     const anillo3 = {
         id: 3,
         nombre: 'Anillo Merlí',
-        precio: 26.000
+        precio: 26000
     }
-    const anillosProductos = [anillo1, anillo2, anillo3]
+    const anillosProductos = [anillo1, anillo2, anillo3];
     for(const anillo of anillosProductos) {
-        console.log(anillo)
+        console.log(anillo);
     }
 } else if (productoElegido === "Collares" || productoElegido === "collares") {
     const collar1 = {
         id: 1,
         nombre: 'Collar Dorado',
-        precio: 10.000
+        precio: 10000
     }
     const collar2 = {
         id: 2,
         nombre: 'Collar Esperanza',
-        precio: 5.000
+        precio: 5000
     }
     const collar3 = {
         id: 3,
         nombre: 'Collar Tulúm',
-        precio: 17.000
+        precio: 17000
     }
-    const collaresProductos = [collar1, collar2, collar3]
+    const collaresProductos = [collar1, collar2, collar3];
     for(const collar of collaresProductos) {
         console.log(collar)
     }
@@ -64,19 +64,19 @@ if (productoElegido === "Anillos" || productoElegido === "anillos" ) {
     const aro1 = {
         id: 1,
         nombre: 'Aros Circular',
-        precio: 18.000
+        precio: 18000
     }
     const aro2 = {
         id: 2,
         nombre: 'Aros Gota',
-        precio: 10.000
+        precio: 10000
     }
     const aro3 = {
         id: 3,
         nombre: 'Aros Fantasia',
-        precio: 15.000
+        precio: 15000
     }
-    const arosProductos = [aro1, aro2, aro3]
+    const arosProductos = [aro1, aro2, aro3];
     for(const aro of arosProductos) {
         console.log(aro)
     }
