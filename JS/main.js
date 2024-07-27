@@ -23,7 +23,6 @@ while (respuesta < 1 || respuesta > 2) {
     respuesta = parseInt(prompt('¿Deseas ver nuestro catálogo de joyas? Ingresa el número correspondiente: 1-Si  2-No'));
     if (respuesta === 1) {
     mostrarCatalogoJoyas();
-        break;
     } else if (respuesta === 2) {
         console.log("Gracias por tu visita.");
         break;
