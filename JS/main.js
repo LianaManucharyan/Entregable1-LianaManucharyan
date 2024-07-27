@@ -61,7 +61,6 @@ let respuestaProductos = 0;
 
     if (respuestaProductos === 1) {
       mostrarProductos();
-      break;
     } else if (respuestaProductos === 2) {
       console.log("Gracias por tu visita.");
       break; 
