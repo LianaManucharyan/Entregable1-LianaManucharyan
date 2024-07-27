@@ -8,7 +8,7 @@ let nombreCompleto = nombre + " " + apellido;
 console.log('Bienvenido/a' + " " + nombreCompleto); 
 
 // Si el usuario quiere o no ver el catálogo de precios
-let catalogoJoyas = [
+const catalogoJoyas = [
     { nombre: "Anillos"},
     { nombre: "Pulsera"},
     { nombre: "Aros"}
