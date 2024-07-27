@@ -1,92 +1,78 @@
-//bienvenida
-let bienvenida = alert('¡Bienvenido/a al catálogo de JoyeríaIan!');
+// Bienvenida
+let bienvenida = alert('¡Bienvenido/a al catálogo de JoyeríaIan!'); 
 
-//nombre y apellido del usuario
+// Nombre y Apellido del usuario
 let nombre = prompt('Ingresa tu nombre');
 let apellido = prompt('Ingresa tu apellido');
 let nombreCompleto = nombre + " " + apellido;
-console.log('Bienvenido/a' + " " + nombreCompleto);
+console.log('Bienvenido/a' + " " + nombreCompleto); 
 
-//si el usuario quiere o no ver el catálogo de precios
-let catalogoPrecios = prompt('¿Deseas ver nuestro catálogo de joyas? (si/no)');
-if (catalogoPrecios === "si") {
-    const productos = ['Anillos', 'Collares', 'Aros'];
-    console.log(productos.sort());
-} else if (catalogoPrecios === "no") {
-    alert('Gracias por llegar hasta acá!');
-} else {
-    alert('Respuesta no válida. Por favor, responde con "si" o "no".');
+// Si el usuario quiere o no ver el catálogo de precios
+let catalogoJoyas = [
+    { nombre: "Anillos"},
+    { nombre: "Pulsera"},
+    { nombre: "Aros"}
+    ];
+
+function mostrarCatalogoJoyas() {
+    console.log(catalogoJoyas);
 }
 
-//consulta de precio de productos
-let productoElegido = prompt('¿De qué producto te gustaría saber el precio?');
-switch (productoElegido) {
-    case "anillos":
-        const anillo1 = {
-            id: 1,
-            nombre: 'Anillo Esmeralda',
-            precio: 8000
-        };
-        const anillo2 = {
-            id: 2,
-            nombre: 'Anillo Jazmín',
-            precio: 18000
-        };
-        const anillo3 = {
-            id: 3,
-            nombre: 'Anillo Merlí',
-            precio: 26000
-        };
-        const anillosProductos = [anillo1, anillo2, anillo3];
-        for (const anillo of anillosProductos) {
-            console.log(anillo);
-        }
+let respuesta = 0;
+while (respuesta < 1 || respuesta > 2) {
+    respuesta = parseInt(prompt('¿Deseas ver nuestro catálogo de joyas? Ingresa el número correspondiente: 1-Si  2-No'));
+    if (respuesta === 1) {
+    mostrarCatalogoJoyas();
         break;
-    case "collares":
-        const collar1 = {
-            id: 1,
-            nombre: 'Collar Dorado',
-            precio: 10000
-        };
-        const collar2 = {
-            id: 2,
-            nombre: 'Collar Esperanza',
-            precio: 5000
-        };
-        const collar3 = {
-            id: 3,
-            nombre: 'Collar Tulúm',
-            precio: 17000
-        };
-        const collaresProductos = [collar1, collar2, collar3];
-        for (const collar of collaresProductos) {
-            console.log(collar);
-        }
+    } else if (respuesta === 2) {
+        console.log("Gracias por tu visita.");
         break;
-    case "aros":
-        const aro1 = {
-            id: 1,
-            nombre: 'Aros Circular',
-            precio: 18000
-        };
-        const aro2 = {
-            id: 2,
-            nombre: 'Aros Gota',
-            precio: 10000
-        };
-        const aro3 = {
-            id: 3,
-            nombre: 'Aros Fantasia',
-            precio: 15000
-        };
-        const arosProductos = [aro1, aro2, aro3];
-        for (const aro of arosProductos) {
-            console.log(aro);
-        }
-        break;
-    default:
-        console.log('Producto no encontrado');
+    } else {
+        alert('Respuesta no válida. Por favor, responde con "1" o "2".');
+    }
 }
 
-//despedida
-let despedida = alert('¡Gracias por llegar hasta acá!');
+// Si es usuario quiere ver los precios de los productos
+const productos = {
+    anillos: [
+        { nombre: 'Anillo de oro', precio: 150 },
+        { nombre: 'Anillo de plata', precio: 80 },
+        { nombre: 'Anillo de diamantes', precio: 500 }
+    ],
+    aros: [
+        { nombre: 'Aros de oro', precio: 120 },
+        { nombre: 'Aros de plata', precio: 60 },
+        { nombre: 'Aros de perlas', precio: 90 }
+    ],
+    collares: [
+        { nombre: 'Collar de perlas', precio: 200 },
+        { nombre: 'Collar de oro', precio: 300 },
+        { nombre: 'Collar de plata', precio: 100 }
+    ]
+};
+
+function mostrarProductos() {
+    console.log(productos);
+}
+  
+let respuestaProductos = 0;
+  
+  while (respuestaProductos < 1 || respuestaProductos > 2) {
+    respuestaProductos = parseInt(prompt('¿Desea acceder a los precios de nuestros productos? 1-Si 2-No'));
+
+    if (respuestaProductos === 1) {
+      mostrarProductos();
+      break;
+    } else if (respuestaProductos === 2) {
+      console.log("Gracias por tu visita.");
+      break; 
+    } else {
+      alert('Respuesta no válida. Por favor, responde con "1" o "2".');
+    }
+  }
+
+// Despedida
+function despedida () {
+    alert("Gracias por llegar hasta acá" + " " + nombre + " " + apellido + "!!");
+}
+despedida();
