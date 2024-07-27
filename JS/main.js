@@ -14,7 +14,7 @@ const catalogoJoyas = [
     { nombre: "Aros"}
     ];
 
-function mostrarCatalogoJoyas() {
+function mostrarCatalogoJoyas(catalogoJoyas) {
     console.log(catalogoJoyas);
 }
 
@@ -22,7 +22,7 @@ let respuesta = 0;
 while (respuesta < 1 || respuesta > 2) {
     respuesta = parseInt(prompt('¿Deseas ver nuestro catálogo de joyas? Ingresa el número correspondiente: 1-Si  2-No'));
     if (respuesta === 1) {
-    mostrarCatalogoJoyas();
+    mostrarCatalogoJoyas(catalogoJoyas);
     } else if (respuesta === 2) {
         console.log("Gracias por tu visita.");
         break;
@@ -50,7 +50,7 @@ const productos = {
     ]
 };
 
-function mostrarProductos() {
+function mostrarProductos(productos) {
     console.log(productos);
 }
   
@@ -60,7 +60,7 @@ let respuestaProductos = 0;
     respuestaProductos = parseInt(prompt('¿Desea acceder a los precios de nuestros productos? 1-Si 2-No'));
 
     if (respuestaProductos === 1) {
-      mostrarProductos();
+      mostrarProductos(productos);
     } else if (respuestaProductos === 2) {
       console.log("Gracias por tu visita.");
       break; 
@@ -70,7 +70,9 @@ let respuestaProductos = 0;
   }
 
 // Despedida
-function despedida () {
-    alert("Gracias por llegar hasta acá" + " " + nombre + " " + apellido + "!!");
+function despedida (nombreMarca) {
+    alert("Gracias por llegar hasta acá." + " " + "Nosotros somos:" + " " + nombreMarca);
 }
-despedida();
+
+let nombreMarca = "JoyeríaIan";
+despedida(nombreMarca);
