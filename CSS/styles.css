@@ -1,0 +1,121 @@
+header {
+    .container-fluid {
+        text-align: right;
+        text-decoration: none;
+        background-color: #ffffff;
+        padding: 25px;
+    }
+
+    .navbar-brand {
+        font-size: 35px;
+        color: #684e4e;
+        font-family:Major Mono Display;
+    }
+
+    .navbar-nav {
+        text-align: right;
+    }
+
+    .nav-link {
+        color: #000000;
+        font-family: Montserrat; 
+    }
+  }
+
+.product-card {
+    border: 1px solid #ddd; 
+    border-radius: 2px; 
+    padding: 10px; 
+    text-align: center; 
+}
+
+.cart-item{
+    h3{
+        font-family: Montserrat;
+    }
+
+    p{
+        text-align: left;
+    }
+}
+
+h2{
+    font-family: Montserrat;
+    font-size: 20px;
+}
+
+.remove-btn{
+    background-color: #a73333; /* Color de fondo del botón */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+h1{
+    font-family: Major Mono Display;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+.product-card button {
+    background-color: #a73333; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+}
+
+
+#productos-con-descuento {
+    display: flex; /* Usa flexbox para alinear elementos en fila */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la línea siguiente si es necesario */
+    gap: 10px; /* Espacio entre los elementos */
+    padding: 10px; /* Espacio interno del contenedor */
+    box-sizing: border-box;
+}
+
+.productosDescuento {
+    background-color: white; /* Color de fondo de los cuadros */
+    border: 1px solid #ddd; /* Borde de los cuadros */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px; /* Espacio interno del cuadro */
+    width: calc(33.333% - 20px); /* Ancho de cada cuadro, ajustado para el espacio entre elementos */
+    box-sizing: border-box;
+    text-align: center; /* Centra el texto y contenido en cada cuadro */
+}
+
+.productosDescuento img {
+    width: 100%; /* Imagen ajustada al ancho del cuadro */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.productosDescuento button {
+    background-color: #a73333; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.productosDescuento button:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+}
+

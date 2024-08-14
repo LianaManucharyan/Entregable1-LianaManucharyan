@@ -1,78 +1,140 @@
-// Bienvenida
-let bienvenida = alert('¡Bienvenido/a al catálogo de JoyeríaIan!'); 
+// Variables
+const productosJoyas = [
+    { id: 1, 
+        nombre: 'Aros Miranda Dorados', 
+        precio: 60000, 
+        imagen: './IMG/producto5.jpg' },
+    { id: 2, 
+        nombre: 'Anillo Tabú Dorados', 
+        precio: 60000, 
+        imagen: './IMG/producto9.jpg' },
+    { id: 3, 
+        nombre: 'Aros Adá Dorados', 
+        precio: 75000, 
+        imagen: './IMG/producto10.jpg' },
+    { id: 4, 
+        nombre: 'Aros Colgante Plateados', 
+        precio: 80000, 
+        imagen: './IMG/producto11.jpg' },
+    { id: 5, 
+        nombre: 'Pulsera Cadena Dorada', 
+        precio: 65000, 
+        imagen: './IMG/producto12.jpg' },
+    { id: 6, 
+        nombre: 'Aros Gota Dorados', 
+        precio: 40000, 
+        imagen: './IMG/producto13.jpg' },
+    { id: 7, 
+        nombre: 'Collar Fino Dorado', 
+        precio: 40000, 
+        imagen: './IMG/producto14.jpg' },
+    { id: 8, 
+        nombre: 'Pulsera Amistad Dorada', 
+        precio: 50000, 
+        imagen: './IMG/producto15.jpg' },
+    { id: 9, 
+        nombre: 'Pulsera Circuitos Dorada', 
+        precio: 50000, 
+        imagen: './IMG/producto4.jpg' },
+];
 
-// Nombre y Apellido del usuario
-let nombre = prompt('Ingresa tu nombre');
-let apellido = prompt('Ingresa tu apellido');
-let nombreCompleto = nombre + " " + apellido;
-console.log('Bienvenido/a' + " " + nombreCompleto); 
+const productosDescuento = productosJoyas.map(producto => {
+    const precioDescuento = producto.precio - (producto.precio * 20 / 100);
+    return {
+        id: producto.id,
+        nombre: producto.nombre,
+        imagen: producto.imagen,
+        precioOriginal: producto.precio,
+        precioDescuento: precioDescuento
+    };
+});
 
-// Si el usuario quiere o no ver el catálogo de precios
-const catalogoJoyas = [
-    { nombre: "Anillos"},
-    { nombre: "Pulsera"},
-    { nombre: "Aros"}
-    ];
+// Guardar productos con descuento en localStorage
+localStorage.setItem('productosDescuento', JSON.stringify(productosDescuento));
 
-function mostrarCatalogoJoyas(catalogoJoyas) {
-    console.log(catalogoJoyas);
+// Cargar productos desde localStorage
+function cargarProductosDesdeLocalStorage() {
+    const storedProducts = JSON.parse(localStorage.getItem('productosDescuento'));
+    return storedProducts ? storedProducts : productosDescuento;
 }
 
-let respuesta = 0;
-while (respuesta < 1 || respuesta > 2) {
-    respuesta = parseInt(prompt('¿Deseas ver nuestro catálogo de joyas? Ingresa el número correspondiente: 1-Si  2-No'));
-    if (respuesta === 1) {
-    mostrarCatalogoJoyas(catalogoJoyas);
-    } else if (respuesta === 2) {
-        console.log("Gracias por tu visita.");
-        break;
-    } else {
-        alert('Respuesta no válida. Por favor, responde con "1" o "2".');
-    }
+// Función para renderizar productos con descuento
+function renderProductosConDescuento() {
+    const contenedorDescuento = document.getElementById('productos-con-descuento');
+    const productosDescuentoHTML = cargarProductosDesdeLocalStorage().map(producto => {
+        return `
+            <div class="productosDescuento">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <strong>${producto.nombre} - 20% off</strong><br>
+                Precio Original: $${producto.precioOriginal}<br>
+                Precio con Descuento: $${producto.precioDescuento}
+                <button class="productoAgregar" id="${producto.id}">Agregar</button>
+            </div>
+        `;
+    });
+    contenedorDescuento.innerHTML = productosDescuentoHTML.join('');
+    addToCartButton(); 
 }
 
-// Si es usuario quiere ver los precios de los productos
-const productos = {
-    anillos: [
-        { nombre: 'Anillo de oro', precio: 150 },
-        { nombre: 'Anillo de plata', precio: 80 },
-        { nombre: 'Anillo de diamantes', precio: 500 }
-    ],
-    aros: [
-        { nombre: 'Aros de oro', precio: 120 },
-        { nombre: 'Aros de plata', precio: 60 },
-        { nombre: 'Aros de perlas', precio: 90 }
-    ],
-    collares: [
-        { nombre: 'Collar de perlas', precio: 200 },
-        { nombre: 'Collar de oro', precio: 300 },
-        { nombre: 'Collar de plata', precio: 100 }
-    ]
-};
-
-function mostrarProductos(productos) {
-    console.log(productos);
-}
-  
-let respuestaProductos = 0;
-  
-  while (respuestaProductos < 1 || respuestaProductos > 2) {
-    respuestaProductos = parseInt(prompt('¿Desea acceder a los precios de nuestros productos? 1-Si 2-No'));
-
-    if (respuestaProductos === 1) {
-      mostrarProductos(productos);
-    } else if (respuestaProductos === 2) {
-      console.log("Gracias por tu visita.");
-      break; 
-    } else {
-      alert('Respuesta no válida. Por favor, responde con "1" o "2".');
-    }
-  }
-
-// Despedida
-function despedida (nombreMarca) {
-    alert("Gracias por llegar hasta acá." + " " + "Nosotros somos:" + " " + nombreMarca);
+// Función para renderizar carrito de compras
+function renderCarrito(cartItems) {
+    const cartContainer = document.getElementById('cart-section');
+    cartContainer.innerHTML = ''; 
+    cartItems.forEach(producto => {
+        const cart = document.createElement('div');
+        cart.className = 'cart-item'; 
+        // Encuentra el producto con descuento desde el localStorage
+        const productoConDescuento = cargarProductosDesdeLocalStorage().find(p => p.id === producto.id);
+        const precioMostrar = productoConDescuento ? productoConDescuento.precioDescuento : producto.precio;
+        cart.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p>Precio: $${precioMostrar}</p>
+            <button class="remove-btn" data-id="${producto.id}">Eliminar</button>
+        `;
+        cartContainer.appendChild(cart);
+    });
+    addRemoveFromCartButton(); 
 }
 
-let nombreMarca = "JoyeríaIan";
-despedida(nombreMarca);
+// Función para agregar productos al carrito
+function addToCartButton() {
+    const addButton = document.querySelectorAll(".productoAgregar");
+    addButton.forEach(button => {
+        button.onclick = (e) => {
+            const productId = e.currentTarget.id;
+            const selectedProduct = productosDescuento.find(producto => producto.id == productId); // Obtener producto con descuento
+            if (selectedProduct) {
+                let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+                cartProducts.push(selectedProduct);
+                localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+                renderCarrito(cartProducts); // Volver a renderizar el carrito
+            }
+        }
+    });
+}
+
+// Función para eliminar productos del carrito
+function removeProduct(id) {
+    let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    cartProducts = cartProducts.filter(producto => producto.id !== id);
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    renderCarrito(cartProducts); 
+}
+
+function addRemoveFromCartButton() {
+    const removeButtons = document.querySelectorAll(".remove-btn");
+    removeButtons.forEach(button => {
+        button.onclick = (e) => {
+            const id = parseInt(e.currentTarget.getAttribute('data-id'));
+            removeProduct(id);
+        }
+    });
+}
+
+// Inicializar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderProductosConDescuento();
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    renderCarrito(cartProducts);
+});
