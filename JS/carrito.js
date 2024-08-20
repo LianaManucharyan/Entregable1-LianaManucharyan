@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cartContainer = document.getElementById("cart-section");
+const cartContainer = document.getElementById("cart-section");
 
     // Función para obtener el producto con descuento desde el localStorage
     function obtenerProductosDescuento() {
@@ -46,4 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar el carrito
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
     renderCarrito(cartProducts);
-});
