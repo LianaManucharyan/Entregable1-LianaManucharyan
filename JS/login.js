@@ -1,6 +1,7 @@
 const loginForm = document.querySelector('#loginForm');
 
 if (loginForm) {
+    console.log('Formulario encontrado.');
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -42,13 +43,5 @@ if (loginForm) {
                 confirmButtonText: 'Aceptar'
             });
         }
-    });
-} else {
-    Swal.fire({
-        title: 'Error',
-        text: 'El formulario de inicio de sesión no se encuentra.',
-        icon: 'error',
-        iconColor: 'red',
-        confirmButtonText: 'Aceptar'
     });
 }
