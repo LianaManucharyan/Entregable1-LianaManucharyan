@@ -1,47 +1,47 @@
 [
     { "id": 1, 
         "nombre": "Aros Miranda Dorados", 
-        "precio": 60000, 
+        "precio": 6000, 
         "imagen": "./IMG/producto5.jpg" 
     },
     { "id": 2, 
         "nombre": "Anillo Tabú Dorados", 
-        "precio": 60000, 
+        "precio": 6000, 
         "imagen": "./IMG/producto9.jpg"
     },
     { "id": 3, 
         "nombre": "Aros Adá Dorados", 
-        "precio": 75000, 
+        "precio": 7500, 
         "imagen": "./IMG/producto10.jpg" 
     },
     { "id": 4, 
         "nombre": "Aros Colgante Plateados", 
-        "precio": 80000, 
+        "precio": 8000, 
         "imagen": "./IMG/producto11.jpg" 
     },
     { "id": 5, 
         "nombre": "Pulsera Cadena Dorada", 
-        "precio": 65000, 
+        "precio": 6500, 
         "imagen": "./IMG/producto12.jpg"
     },
     { "id": 6, 
         "nombre": "Aros Gota Dorados", 
-        "precio": 40000, 
+        "precio": 4000, 
         "imagen": "./IMG/producto13.jpg" 
     },
     { "id": 7, 
         "nombre": "Collar Fino Dorado", 
-        "precio": 40000, 
+        "precio": 4000, 
         "imagen": "./IMG/producto14.jpg"
     },
     { "id": 8, 
         "nombre": "Pulsera Amistad Dorada", 
-        "precio": 50000, 
+        "precio": 5000, 
         "imagen": "./IMG/producto15.jpg" 
     },
     { "id": 9, 
         "nombre": "Pulsera Circuitos Dorada", 
-        "precio": 50000, 
+        "precio": 5000, 
         "imagen": "./IMG/producto4.jpg" 
     }
 ]
