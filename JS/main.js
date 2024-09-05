@@ -251,11 +251,12 @@ function anyadirProductoAlCarrito(evento) {
     document.getElementById('btnFinalizar').addEventListener('click', function() {
         const nombre = document.getElementById('nombre').value;
         const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
 
         if (nombre && email) {
             Swal.fire({
                 title: 'Gracias por la compra',
-                text: `${nombre}. Recibirás dentro de poco en tu mail: ${email} tus detalles de compra`,
+                text: `${nombre}. Recibirás dentro de poco en tu mail: ${email} y en tu teléfono: ${telefono} tus detalles de compra`,
                 icon: 'success',
             });
 
