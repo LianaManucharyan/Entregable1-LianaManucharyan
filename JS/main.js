@@ -38,103 +38,177 @@ const productosJoyas = [
         imagen: './IMG/producto4.jpg' },
 ];
 
-const productosDescuento = productosJoyas.map(producto => {
-    const precioDescuento = producto.precio - (producto.precio * 20 / 100);
-    return {
-        id: producto.id,
-        nombre: producto.nombre,
-        imagen: producto.imagen,
-        precioOriginal: producto.precio,
-        precioDescuento: precioDescuento
+let carrito = [];
+            const divisa = '$';
+            const DOMitems = document.querySelector('#items');
+            const DOMcarrito = document.querySelector('#carrito');
+            const DOMtotal = document.querySelector('#total');
+            const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+            const miLocalStorage = window.localStorage;
+    
+    // Dibujamos todos los productos a partir de la base de datos json
+    function renderizarProductos() {
+        fetch("./DB/data.json")
+        .then(response=>response.json())
+        .then(data=> {
+            data.forEach((info) => {
+                // Card
+                const miNodo = document.createElement('div');
+                miNodo.classList.add('card', 'col-sm-3');
+                // Body de la card
+                const miNodoCardBody = document.createElement('div');
+                miNodoCardBody.classList.add('card-body');
+                // Nombre del producto
+                const miNodoTitle = document.createElement('h5');
+                miNodoTitle.classList.add('card-title');
+                miNodoTitle.textContent = info.nombre;
+                // Imagen del producto
+                const miNodoImagen = document.createElement('img');
+                miNodoImagen.classList.add('img-fluid');
+                miNodoImagen.setAttribute('src', info.imagen);
+                // Precio del producto
+                const miNodoPrecio = document.createElement('p');
+                miNodoPrecio.classList.add('card-text');
+                miNodoPrecio.textContent = `${info.precio}${divisa}`;
+                // Botón de compra
+                const miNodoBoton = document.createElement('button');
+                miNodoBoton.classList.add('btn', 'btn-dark');
+                miNodoBoton.textContent = 'Comprar';
+                miNodoBoton.setAttribute('marcador', info.id);
+                miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                // Insertamos los productos
+                miNodoCardBody.appendChild(miNodoImagen);
+                miNodoCardBody.appendChild(miNodoTitle);
+                miNodoCardBody.appendChild(miNodoPrecio);
+                miNodoCardBody.appendChild(miNodoBoton);
+                miNodo.appendChild(miNodoCardBody);
+                DOMitems.appendChild(miNodo);
+            });
+        });
     };
-});
-
-// Guardar productos con descuento en localStorage
-localStorage.setItem('productosDescuento', JSON.stringify(productosDescuento));
-
-// Cargar productos desde localStorage
-function cargarProductosDesdeLocalStorage() {
-    const storedProducts = JSON.parse(localStorage.getItem('productosDescuento'));
-    return storedProducts ? storedProducts : productosDescuento;
-}
-
-// Función para renderizar productos con descuento
-function renderProductosConDescuento() {
-    const contenedorDescuento = document.getElementById('productos-con-descuento');
-    const productosDescuentoHTML = cargarProductosDesdeLocalStorage().map(producto => {
-        return `
-            <div class="productosDescuento">
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <strong>${producto.nombre} - 20% off</strong><br>
-                Precio Original: $${producto.precioOriginal}<br>
-                Precio con Descuento: $${producto.precioDescuento}
-                <button class="productoAgregar" id="${producto.id}">Agregar</button>
-            </div>
-        `;
-    });
-    contenedorDescuento.innerHTML = productosDescuentoHTML.join('');
-    addToCartButton(); 
-}
-
-// Función para renderizar carrito de compras
-function renderCarrito(cartItems) {
-    const cartContainer = document.getElementById('cart-section');
-    cartContainer.innerHTML = ''; 
-    cartItems.forEach(producto => {
-        const cart = document.createElement('div');
-        cart.className = 'cart-item'; 
-        // Encuentra el producto con descuento desde el localStorage
-        const productoConDescuento = cargarProductosDesdeLocalStorage().find(p => p.id === producto.id);
-        const precioMostrar = productoConDescuento ? productoConDescuento.precioDescuento : producto.precio;
-        cart.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>Precio: $${precioMostrar}</p>
-            <button class="remove-btn" data-id="${producto.id}">Eliminar</button>
-        `;
-        cartContainer.appendChild(cart);
-    });
-    addRemoveFromCartButton(); 
-}
-
-// Función para agregar productos al carrito
-function addToCartButton() {
-    const addButton = document.querySelectorAll(".productoAgregar");
-    addButton.forEach(button => {
-        button.onclick = (e) => {
-            const productId = e.currentTarget.id;
-            const selectedProduct = productosDescuento.find(producto => producto.id == productId); // Obtener producto con descuento
-            if (selectedProduct) {
-                let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-                cartProducts.push(selectedProduct);
-                localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-                renderCarrito(cartProducts); // Volver a renderizar el carrito
-            }
-        }
-    });
-}
-
-// Función para eliminar productos del carrito
-function removeProduct(id) {
-    let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-    cartProducts = cartProducts.filter(producto => producto.id !== id);
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-    renderCarrito(cartProducts); 
-}
-
-function addRemoveFromCartButton() {
-    const removeButtons = document.querySelectorAll(".remove-btn");
-    removeButtons.forEach(button => {
-        button.onclick = (e) => {
-            const id = parseInt(e.currentTarget.getAttribute('data-id'));
-            removeProduct(id);
-        }
-    });
-}
-
-// Inicializar la página
-document.addEventListener('DOMContentLoaded', () => {
-    renderProductosConDescuento();
-    const cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-    renderCarrito(cartProducts);
-});
+    
+    // Evento para añadir un producto al carrito de compras
+    function anyadirProductoAlCarrito(evento) {
+        // Añadimos el nodo al carrito
+        carrito.push(evento.target.getAttribute('marcador'))
+        // Enviamos una alerta al usuario
+        Swal.fire({
+            title: '¡Excelente!',
+            text: 'Añadiste un producto al carrito de compras',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+        // Actualizamos el carrito
+        renderizarCarrito();
+        // Actualizamos el LocalStorage
+        guardarCarritoEnLocalStorage();
+    };
+    
+    // Dibujamos los productos guardados en el carrito de compras
+    function renderizarCarrito() {
+        // Vaciamos todo el html
+        DOMcarrito.textContent = '';
+        // Quitamos los duplicados
+        const carritoSinDuplicados = [...new Set(carrito)];
+        // Generamos los nodos a partir del carrito
+        carritoSinDuplicados.forEach((item) => {
+        // Obtenemos el ítem que necesitamos de la variable "base de datos"
+        const miItem = data.filter((itemBaseDatos) => {
+         // Verificamos si coinciden los id
+            return itemBaseDatos.id === parseInt(item);
+            });
+        // Contamos las veces que se repite el producto
+        const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+        // Si los id coinciden, incrementamos el contador
+            return itemId === item ? total += 1 : total;
+            }, 0);
+        // Creamos el nodo del ítem del carrito
+        const miNodo = document.createElement('li');
+        miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+        // Botón de eliminar producto del carrito
+        const miBoton = document.createElement('button');
+        miBoton.classList.add('btn', 'btn-dark', 'mx-5');
+        miBoton.textContent = 'Eliminar';
+        miBoton.style.marginLeft = '1rem';
+        miBoton.style.marginTop = '15px';
+        miBoton.dataset.item = item;
+        miBoton.addEventListener('click', borrarItemCarrito);
+        // Mezclamos nodos
+        miNodo.appendChild(miBoton);
+        DOMcarrito.appendChild(miNodo);
+        });
+        // Renderizamos el precio total en el HTML
+        DOMtotal.textContent = calcularTotal();
+    };
+    
+    // Evento para eliminar un ítem del carrito
+    function borrarItemCarrito(evento) {
+        // Obtenemos el id del botón pulsado
+        const id = evento.target.dataset.item;
+        // Enviamos una alerta al usuario
+        Swal.fire({
+            title: '¡Atención!',
+            text: 'Acabas de eliminar un producto de tu carrito de compras',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+        // Borramos todos los productos
+        carrito = carrito.filter((carritoId) => {
+            return carritoId !== id;
+        });
+        // volvemos a renderizar
+        renderizarCarrito();
+        // Actualizamos el LocalStorage
+        guardarCarritoEnLocalStorage();
+    };
+    
+    // Calculamos el precio total de los productos añadidos al carrito
+    function calcularTotal() {
+        // Recorremos el array del carrito
+        return carrito.reduce((total, item) => {
+            // Obtenemos el precio de cada producto
+            const miItem = data.filter((itemBaseDatos) => {
+                return itemBaseDatos.id === parseInt(item);
+            });
+            // Sumamos el total
+            return total + miItem[0].precio;
+        }, 0).toFixed(2);
+    };
+    
+    // Vaciamos el carrito y lo volvemos a dibujar
+    function vaciarCarrito() {
+        // Limpiamos los productos guardados
+        carrito = [];
+        // Enviamos una alerta al usuario
+        Swal.fire({
+            title: '¡Atención!',
+            text: 'Acabas de vaciar tu carrito de compras',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+        // Renderizamos los cambios
+        renderizarCarrito();
+        // Borramos el LocalStorage
+            localStorage.clear();
+    };
+    
+    function guardarCarritoEnLocalStorage () {
+        miLocalStorage.setItem('carrito', JSON.stringify(carrito));
+    };
+    
+    function cargarCarritoDeLocalStorage () {
+        // ¿Existe algo guardado previamente en el LocalStorage?
+            if (miLocalStorage.getItem('carrito') !== null) {
+        // Cargamos la información
+                carrito = JSON.parse(miLocalStorage.getItem('carrito'));
+            };
+    };
+    
+    // Eventos
+    DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+    
+    // Invocamos las funciones
+    cargarCarritoDeLocalStorage();
+    renderizarProductos();
+    renderizarCarrito();

@@ -16,7 +16,7 @@ loginForm.addEventListener('submit', (e)=>{
         });
     }
     Swal.fire({
-        text: '¡Bienvenid@ a Hernández Shoes!',
+        text: '¡Bienvenid@ a Joyería Ian!',
         icon: 'success',
         iconColor: 'green',
         confirmButtonText: 'Ingresar'

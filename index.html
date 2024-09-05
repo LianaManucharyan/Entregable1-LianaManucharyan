@@ -16,9 +16,9 @@
     <script defer src="./JS/main.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/logout.js"></script>
-
   </head>
 <body>
+<!--COMIENZO DEL HEADER-->
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -31,21 +31,71 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./pages/carrito.html">Carrito</a>
-                  </li>
                 </ul>
             </div>
             </div>
           </nav>
     </header>
+<!--FIN DEL HEADER-->
+<!--COMIENZO DEL MAIN-->
     <main>
        <h1>Nuestros productos</h1>
         <p>Aprovechá y adquirí nuestros productos que más quieras! Aprobechando un 20% en todos nuestros productos por el día de la niñes!</p>
-    </main>
-
-    <div id="productos-con-descuento"></div>
-
-    
+        <!-- Contenedor general dentro del main-->
+        <div class="container">
+          <div class="row">
+              <!-- Elementos generados a partir del JSON -->
+              <main id="items" class="col-sm-9 row"></main>
+              <!-- Fin de Elementos generados a partir del JSON-->
+              <!-- Carrito -->
+              <aside class="col-sm-3">
+                  <h2 class="titulo-carrito">Mi carrito</h2>
+                  <!-- Elementos del carrito -->
+                  <ul id="carrito" class="list-group"></ul>
+                  <hr>
+                  <!-- Precio total -->
+                  <p class="text-right">Total: <span id="total"></span>$</p>
+                  <button id="boton-vaciar" class="btn btn-dark">Vaciar el carrito</button>
+                  <!-- Fin de Elementos del carrito-->
+              </aside>
+              <aside>
+                  <div>
+                      <button class="btn btn-dark boton-form logout" id="logout">Cerrar sesión</button>
+                  </div>
+              </aside>
+              <!-- Fin de Carrito-->
+            </div>
+        </div>
+          <!-- Fin de Contenedor general dentro del main-->
+      </main>
+<!--FIN DEL MAIN-->
+<!--COMIENZO DEL FOOTER-->
+<footer class="footer">
+  <div class="container-fluid">
+      <div class="row p-5 pb-4 text-white">
+          <!-- Logo y textos footer -->
+          <div class="col-xs-12 col sm-12 col-md-6 col-lg-6 text-center align-items-center">
+              <a href="index.html">
+                  <h2>Joyería Ian</h2>
+              </a>
+              <p class="text-white text-center copyright">Copyright &#169 2024</p>
+          </div>
+          <!-- Fin de Logo y textos footer -->
+          <!-- Sección Redes footer -->
+          <ul class="col-xs-12 col sm-12 col-md-6 col-lg-6 text-center">
+              <p class="h5 mt-5 mb-3 texto-footer">Nuestras redes</p>
+                  <a href="https://twitter.com" target="_blank"><img src="./img/Twitter.png" alt="Ícono de Twitter"></a>
+                  <a href="https://instagram.com" target="_blank"><img src="./img/Instagram.png" alt="Ícono de Instagram"></a>
+                  <a href="https://facebook.com" target="_blank"><img src="./img/Facebook.png" alt="Ícono de Facebook"></a>
+          </ul>
+          <!-- Fin de Sección Redes footer -->
+      </div>
+  </div>
+</footer>
+<!--FIN DEL FOOTER-->
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--Sweet Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
