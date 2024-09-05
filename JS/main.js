@@ -255,7 +255,7 @@ function anyadirProductoAlCarrito(evento) {
         if (nombre && email) {
             Swal.fire({
                 title: 'Gracias por la compra',
-                text: `Recibirás dentro de poco en tu mail: ${email}, tus detalles de compra`,
+                text: `${nombre}. Recibirás dentro de poco en tu mail: ${email} tus detalles de compra`,
                 icon: 'success',
             });
 
