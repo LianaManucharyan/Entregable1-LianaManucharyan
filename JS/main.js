@@ -3,39 +3,51 @@ const data = [
     { id: 1, 
         nombre: 'Aros Miranda Dorados', 
         precio: 6000, 
-        imagen: './IMG/producto5.jpg' },
+        imagen: './IMG/producto1Aros.jpg' },
     { id: 2, 
         nombre: 'Anillo Tabú Dorados', 
         precio: 6000, 
-        imagen: './IMG/producto9.jpg' },
+        imagen: './IMG/producto2Anillo.jpg' },
     { id: 3, 
         nombre: 'Aros Adá Dorados', 
         precio: 7500, 
-        imagen: './IMG/producto10.jpg' },
+        imagen: './IMG/producto3Aros.jpg' },
     { id: 4, 
         nombre: 'Aros Colgante Plateados', 
         precio: 8000, 
-        imagen: './IMG/producto11.jpg' },
+        imagen: './IMG/producto4Aros.jpg' },
     { id: 5, 
         nombre: 'Pulsera Cadena Dorada', 
         precio: 6500, 
-        imagen: './IMG/producto12.jpg' },
+        imagen: './IMG/producto5Pulsera.jpg' },
     { id: 6, 
         nombre: 'Aros Gota Dorados', 
         precio: 4000, 
-        imagen: './IMG/producto13.jpg' },
+        imagen: './IMG/producto6Aros.jpg' },
     { id: 7, 
         nombre: 'Collar Fino Dorado', 
         precio: 4000, 
-        imagen: './IMG/producto14.jpg' },
+        imagen: './IMG/producto7Collar.jpg' },
     { id: 8, 
         nombre: 'Pulsera Amistad Dorada', 
         precio: 5000, 
-        imagen: './IMG/producto15.jpg' },
+        imagen: './IMG/producto8Pulsera.jpg' },
     { id: 9, 
         nombre: 'Pulsera Circuitos Dorada', 
         precio: 5000, 
-        imagen: './IMG/producto4.jpg' },
+        imagen: './IMG/producto9Pulsera.jpg' },
+    { id: 10, 
+        nombre: 'Aros Perlas María', 
+        precio: 4000, 
+        imagen: './IMG/producto10Aros.jpg' },
+    { id: 11,
+        nombre: 'Aros Estefi Elegante', 
+        precio: 5500, 
+        imagen: './IMG/producto11Aros.jpg'},
+    { id: 12,
+        nombre: 'Pulsera Doble Dorada', 
+        precio: 5500, 
+        imagen: './IMG/producto12Pulsera.jpg'},
 ];
 
 let carrito = [];
@@ -88,21 +100,39 @@ let carrito = [];
     };
     
     // Evento para añadir un producto al carrito de compras
-    function anyadirProductoAlCarrito(evento) {
-        // Añadimos el nodo al carrito
-        carrito.push(evento.target.getAttribute('marcador'))
-        // Enviamos una alerta al usuario
+function anyadirProductoAlCarrito(evento) {
+    try {
+        // Intentar añadir el nodo al carrito
+        carrito.push(evento.target.getAttribute('marcador'));
+
+        // Intentar enviar una alerta al usuario
         Swal.fire({
             title: '¡Excelente!',
             text: 'Añadiste un producto al carrito de compras',
             icon: 'success',
             confirmButtonText: 'Aceptar'
-        })
-        // Actualizamos el carrito
+        });
+
+        // Intentar actualizar el carrito
         renderizarCarrito();
-        // Actualizamos el LocalStorage
+
+        // Intentar actualizar el LocalStorage
         guardarCarritoEnLocalStorage();
-    };
+    } catch (error) {
+        // Manejar cualquier error que ocurra
+        console.error('Error al añadir producto al carrito:', error);
+        Swal.fire({
+            title: '¡Error!',
+            text: 'Hubo un problema al añadir el producto al carrito.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    } finally {
+        // Código que siempre se ejecuta, haya o no habido un error
+        console.log('Intento de añadir producto al carrito finalizado');
+    }
+}
+
     
     // Dibujamos los productos guardados en el carrito de compras
     function renderizarCarrito() {
@@ -212,3 +242,34 @@ let carrito = [];
     cargarCarritoDeLocalStorage();
     renderizarProductos();
     renderizarCarrito();
+
+    //botón y form para finalizar
+    document.getElementById('btnComprar').addEventListener('click', function() {
+        document.getElementById('formulario').style.display = 'block';
+    });
+
+    document.getElementById('btnFinalizar').addEventListener('click', function() {
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+
+        if (nombre && email) {
+            Swal.fire({
+                title: 'Gracias por la compra',
+                text: `Recibirás dentro de poco en tu mail: ${email}, tus detalles de compra`,
+                icon: 'success',
+            });
+
+            // Ocultar el formulario
+            document.getElementById('formulario').style.display = 'none';
+
+            // Limpiar los campos del formulario
+            document.getElementById('nombre').value = '';
+            document.getElementById('email').value = '';
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, completa todos los campos.',
+                icon: 'error',
+            });
+        }
+    });

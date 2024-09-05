@@ -2,46 +2,61 @@
     { "id": 1, 
         "nombre": "Aros Miranda Dorados", 
         "precio": 6000, 
-        "imagen": "./IMG/producto5.jpg" 
+        "imagen": "./IMG/producto1Aros.jpg" 
     },
     { "id": 2, 
         "nombre": "Anillo Tabú Dorados", 
         "precio": 6000, 
-        "imagen": "./IMG/producto9.jpg"
+        "imagen": "./IMG/producto2Anillo.jpg"
     },
     { "id": 3, 
         "nombre": "Aros Adá Dorados", 
         "precio": 7500, 
-        "imagen": "./IMG/producto10.jpg" 
+        "imagen": "./IMG/producto3Aros.jpg" 
     },
     { "id": 4, 
         "nombre": "Aros Colgante Plateados", 
         "precio": 8000, 
-        "imagen": "./IMG/producto11.jpg" 
+        "imagen": "./IMG/producto4Aros.jpg" 
     },
     { "id": 5, 
         "nombre": "Pulsera Cadena Dorada", 
         "precio": 6500, 
-        "imagen": "./IMG/producto12.jpg"
+        "imagen": "./IMG/producto5Pulsera.jpg"
     },
     { "id": 6, 
         "nombre": "Aros Gota Dorados", 
         "precio": 4000, 
-        "imagen": "./IMG/producto13.jpg" 
+        "imagen": "./IMG/producto6Aros.jpg" 
     },
     { "id": 7, 
         "nombre": "Collar Fino Dorado", 
         "precio": 4000, 
-        "imagen": "./IMG/producto14.jpg"
+        "imagen": "./IMG/producto7Collar.jpg"
     },
     { "id": 8, 
         "nombre": "Pulsera Amistad Dorada", 
         "precio": 5000, 
-        "imagen": "./IMG/producto15.jpg" 
+        "imagen": "./IMG/producto8Pulsera.jpg" 
     },
     { "id": 9, 
         "nombre": "Pulsera Circuitos Dorada", 
         "precio": 5000, 
-        "imagen": "./IMG/producto4.jpg" 
+        "imagen": "./IMG/producto9Pulsera.jpg" 
+    },
+    { "id": 10, 
+        "nombre": "Aros Perlas María", 
+        "precio": 4000, 
+        "imagen": "./IMG/producto10Aros.jpg" 
+    },
+    { "id": 11,
+        "nombre": "Aros Estefi Elegante", 
+        "precio": 5500, 
+        "imagen": "./IMG/producto11Aros.jpg"
+    },
+    { "id": 12,
+        "nombre": "Pulsera Doble Dorada", 
+        "precio": 5500, 
+        "imagen": "./IMG/producto12Pulsera.jpg"
     }
 ]

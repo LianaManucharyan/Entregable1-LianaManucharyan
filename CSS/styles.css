@@ -30,9 +30,6 @@ header {
 }
 
 .cart-item{
-    h3{
-        font-family: Montserrat;
-    }
 
     p{
         text-align: left;
@@ -42,17 +39,7 @@ header {
 h2{
     font-family: Montserrat;
     font-size: 20px;
-}
-
-.remove-btn{
-    background-color: #a73333; /* Color de fondo del botón */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    color: #684e4e;
 }
 
 h1{
@@ -60,62 +47,104 @@ h1{
     text-align: center;
 }
 
+h5{
+    font-family: Major Mono Display;
+    text-align: center;
+    color: white;
+}
+
+button {
+    font-family: Montserrat;
+    font-size: 15px;
+    background-color: #684e4e;
+    color: white;
+    border-radius: 10px;
+}
+
+#boton-vaciar{
+    font-family: Montserrat;
+    background-color: white;
+    color: #684e4e;
+    border-radius: 10px;
+    border-color: #684e4e;
+}
+
 p{
     text-align: center;
 }
 
-.product-card button {
-    background-color: #a73333; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+.bienvenidatienda {
+    display: flex;
+    flex-direction: row;
+    margin: 150px;
 }
 
-.product-card button:hover {
-    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
-}
-
-
-#productos-con-descuento {
-    display: flex; /* Usa flexbox para alinear elementos en fila */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten a la línea siguiente si es necesario */
-    gap: 10px; /* Espacio entre los elementos */
-    padding: 10px; /* Espacio interno del contenedor */
+#formulario{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 300px;
+    padding: 2em;
+    border: 3px solid #684e4e;
+    border-radius: 3em;
+    background-color: white;
     box-sizing: border-box;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    justify-content: center;
 }
 
-.productosDescuento {
-    background-color: white; /* Color de fondo de los cuadros */
-    border: 1px solid #ddd; /* Borde de los cuadros */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    padding: 10px; /* Espacio interno del cuadro */
-    width: calc(33.333% - 20px); /* Ancho de cada cuadro, ajustado para el espacio entre elementos */
-    box-sizing: border-box;
-    text-align: center; /* Centra el texto y contenido en cada cuadro */
+.btn{
+    font-family: Montserrat;
+    background-color: white;
+    color: #684e4e;
+    border-radius: 10px;
+    border-color: #684e4e;
+    text-align: center;
+    justify-content: center;
 }
 
-.productosDescuento img {
-    width: 100%; /* Imagen ajustada al ancho del cuadro */
-    height: auto; /* Mantiene la proporción de la imagen */
-}
-
-.productosDescuento button {
-    background-color: #a73333; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none;
+footer {
+    background-color: #684e4e;
+    margin-top: 10px;
     padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
 
-.productosDescuento button:hover {
-    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
-}
+    .contenedor{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 100%;
+        box-sizing: border-box;
 
+        .__logo {
+            align-items: center;
+            justify-content: center;
+            margin-left: -5px;
+            color: #ffffff;
+        }
+
+        .__sitios__ubi {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .contenedor__sitios__ubi__a {
+            font-family: Montserrat;
+            color: #ffffff;
+            list-style-type: none;
+        }
+
+        .__redes__ubi {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .contenedor__redes__ubi__a {
+            font-family: Montserrat;
+            color: #ffffff;
+            list-style-type: none;
+        }
+    }
+  }
